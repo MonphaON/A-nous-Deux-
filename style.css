@@ -600,3 +600,56 @@ nav a:hover{
     font-size: clamp(1.4rem, 2vw, 2.6rem);
     white-space: nowrap;
 }
+
+/* =========================
+   💖 WRAPPER SAFE STATS
+========================= */
+
+.stat-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    padding-top: 120px; /* IMPORTANT : empêche overlap navbar */
+    padding-bottom: 120px;
+}
+
+/* bloc principal */
+.main-stat{
+    z-index: 2;
+}
+
+/* clones cachés par défaut */
+.clone-stat{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    pointer-events: none;
+}
+
+/* position contrôlée */
+.clone-top{
+    top: 0;
+}
+
+.clone-bottom{
+    bottom: 0;
+}
+
+/* hover active */
+.stat-wrapper:hover .clone-stat{
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+/* empêche chevauchement général */
+.stats{
+    position: relative;
+    overflow: visible;
+}
