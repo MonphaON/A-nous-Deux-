@@ -16,6 +16,7 @@
 <header>
     <nav>
         <h1 class="logo">A Nous Deux</h1>
+
         <ul>
             <li><a href="#">Accueil</a></li>
             <li><a href="ressources.html">Ressources</a></li>
@@ -30,10 +31,11 @@
     <h2>Bienvenue sur notre site ❤️</h2>
     <p>Notre espace à nous deux.</p>
 
-    <!-- 💖 STATS -->
+    <!-- 💖 STATS AMOUR -->
     <section class="stats">
 
-        <div class="stat-group" id="daysGroup">
+        <!-- GROUPE STATS DÉPLIÉES -->
+        <div class="stat-group">
 
             <div class="stat-box clone top">
                 <h3 id="hoursTogether">0</h3>
@@ -72,6 +74,20 @@
         </a>
     </section>
 
+    <section class="reveal">
+        <a href="ressources.html" class="card-scroll">
+            <h3>Ressources</h3>
+            <p>Ici tu trouveras tout ce dont tu as besoin 😘</p>
+        </a>
+    </section>
+
+    <section class="reveal">
+        <a href="avenir.html" class="card-scroll">
+            <h3>Travaux</h3>
+            <p>Cette page est encore en construction ⚠️</p>
+        </a>
+    </section>
+
 </main>
 
 <footer class="bottom-footer">
@@ -83,33 +99,49 @@
 <!-- INTRO -->
 <div class="intro" id="intro">
     <div class="glass-card">
+
+        <p class="small-text">Bienvenue ma France</p>
+
         <h2>A Nous deux ❤️</h2>
+
+        <p class="description">
+            Un site rien qu’à nous, rempli de souvenirs et d’amour
+        </p>
+
         <button class="btn primary" id="enterBtn">Entrer</button>
+
     </div>
 </div>
 
 <!-- LOCK -->
 <div class="lock-screen" id="lockScreen">
     <div class="lock-box" id="lockBox">
+
         <h2>Entrez le code</h2>
 
         <div class="code-display" id="codeDisplay">______</div>
         <p class="error" id="errorText"></p>
 
         <div class="keypad">
+
             <button onclick="addNumber(1)">1</button>
             <button onclick="addNumber(2)">2</button>
             <button onclick="addNumber(3)">3</button>
+
             <button onclick="addNumber(4)">4</button>
             <button onclick="addNumber(5)">5</button>
             <button onclick="addNumber(6)">6</button>
+
             <button onclick="addNumber(7)">7</button>
             <button onclick="addNumber(8)">8</button>
             <button onclick="addNumber(9)">9</button>
+
             <button onclick="clearCode()">⌫</button>
             <button onclick="addNumber(0)">0</button>
             <button onclick="checkCode()">OK</button>
+
         </div>
+
     </div>
 </div>
 
