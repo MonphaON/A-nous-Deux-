@@ -1,0 +1,468 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    color: white;
+}
+
+.background{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at top left, #ff4d8d 0%, transparent 30%),
+        radial-gradient(circle at bottom right, #6c63ff 0%, transparent 35%),
+        #0f0f1a;
+    z-index: -2;
+}
+
+/* SITE */
+
+.site{
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+/* 🌸 NAVBAR */
+
+header{
+    width: 100%;
+    padding: 25px 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ff80ab, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav ul{
+    display: flex;
+    gap: 35px;
+    list-style: none;
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+nav a:hover{
+    color: #ff80ab;
+    transform: translateY(-2px);
+}
+
+/* HOME */
+
+.home{
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    padding-top: 120px;
+    padding-bottom: 100px;
+}
+
+/* INTRO */
+
+.intro{
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+/* CARD INTRO */
+
+.glass-card{
+    width: 800px;
+    max-width: 95%;
+    padding: 60px;
+    border-radius: 35px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(25px);
+    text-align: center;
+}
+
+/* BUTTON */
+
+.btn{
+    padding: 15px 35px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+}
+
+.primary{
+    background: linear-gradient(90deg, #ff4d8d, #ff80ab);
+    color: white;
+}
+
+/* LOCK */
+
+.lock-screen{
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(10px);
+    z-index: 20;
+}
+
+.lock-box{
+    background: rgba(255,255,255,0.08);
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+/* erreurs */
+
+.shake{
+    animation: shake 0.4s;
+}
+
+@keyframes shake{
+    0%{transform: translateX(0);}
+    25%{transform: translateX(-10px);}
+    50%{transform: translateX(10px);}
+    75%{transform: translateX(-10px);}
+    100%{transform: translateX(0);}
+}
+
+.flash-red{
+    animation: flashRed 0.4s;
+}
+
+@keyframes flashRed{
+    0%{background: rgba(255,0,0,0.25);}
+    100%{background: rgba(255,255,255,0.08);}
+}
+
+/* succès */
+
+.zoom-out{
+    transform: scale(1.2);
+    opacity: 0;
+}
+
+.flash-white{
+    animation: flashWhite 0.6s;
+}
+
+@keyframes flashWhite{
+    0%{background: rgba(255,255,255,0.3);}
+    100%{background: transparent;}
+}
+
+.code-display{
+    font-size: 2rem;
+    letter-spacing: 10px;
+    margin: 20px 0;
+}
+
+.error{
+    color: #ff4d4d;
+    height: 20px;
+}
+
+.keypad{
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    gap: 10px;
+    justify-content: center;
+}
+
+.keypad button{
+    padding: 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.ok{
+    background: #ff4d8d !important;
+}
+
+.clear{
+    background: #444 !important;
+}
+
+/* 🌟 SCROLL REVEAL */
+
+.reveal{
+    display: flex;
+    justify-content: center;
+    margin: 100px 0;
+
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 💳 CARD */
+
+.card-scroll{
+    width: 700px;
+    max-width: 90%;
+    padding: 50px;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(20px);
+
+    text-align: center;
+    text-decoration: none;
+    color: white;
+
+    transition: all 0.4s ease;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* overlay crème plus visible */
+.card-scroll::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        135deg,
+        rgba(246, 241, 235, 0.55),
+        rgba(255, 255, 255, 0.20)
+    );
+
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 0;
+}
+
+.card-scroll:hover::after{
+    opacity: 1;
+}
+
+.card-scroll h3,
+.card-scroll p{
+    position: relative;
+    z-index: 1;
+}
+
+.card-scroll:hover{
+    transform: translateY(-10px) scale(1.02);
+
+    box-shadow:
+        0 0 35px rgba(255, 77, 141, 0.25),
+        0 0 70px rgba(108, 99, 255, 0.15);
+}
+
+.card-scroll:active{
+    transform: scale(0.98);
+}
+
+.card-scroll h3{
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* 🤍 FOOTER */
+
+.bottom-footer{
+    width: 100%;
+    margin-top: 120px;
+    padding: 70px 20px;
+
+    background: linear-gradient(135deg, #f6f1eb, #ffffff);
+    color: #111;
+
+    text-align: center;
+
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+/* 💬 texte animé style citation */
+.footer-quote{
+    font-size: 1.3rem;
+    font-weight: 500;
+
+    display: inline-block;
+    white-space: nowrap;
+
+    opacity: 0;
+    transform: translateX(-50px);
+
+    animation: footerQuoteReveal 2s ease forwards;
+}
+
+@keyframes footerQuoteReveal{
+    0%{
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    60%{
+        opacity: 0.6;
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* =========================
+   💖 STATS PREMIUM FINAL
+========================= */
+
+.stats{
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.stat-box{
+    width: 220px;
+    padding: 28px 22px;
+
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    backdrop-filter: blur(12px);
+
+    text-align: center;
+
+    position: relative;
+    overflow: hidden;
+
+    transition: all 0.35s ease;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.stat-box::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 70%;
+    height: 2px;
+
+    background: linear-gradient(90deg, #ff4d8d, #6c63ff);
+
+    opacity: 0.5;
+}
+
+.stat-box:hover{
+    transform: translateY(-4px);
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border-color: rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.25),
+        0 0 25px rgba(255, 77, 141, 0.12);
+}
+
+.stat-box h3{
+    font-size: 2.6rem;
+    font-weight: 600;
+
+    background: linear-gradient(90deg, #ff80ab, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    margin-bottom: 6px;
+}
+
+.stat-box p{
+    font-size: 0.85rem;
+    opacity: 0.65;
+    letter-spacing: 0.6px;
+}
+
+/* clones hover stats */
+#daysBox{
+    position: relative;
+    overflow: visible;
+}
+
+.clone-stat{
+    position: absolute;
+    left: 0;
+    width: 100%;
+
+    opacity: 0;
+    transform: scale(0.9);
+
+    transition: all 0.35s ease;
+    pointer-events: none;
+}
+
+.clone-top{ top: -95px; }
+.clone-bottom{ bottom: -95px; }
+
+#daysBox:hover .clone-stat{
+    opacity: 1;
+    transform: scale(1);
+}
+
+#daysBox:hover .clone-top{
+    transform: translateY(-8px) scale(1);
+}
+
+#daysBox:hover .clone-bottom{
+    transform: translateY(8px) scale(1);
+}

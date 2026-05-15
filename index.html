@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Nous Deux ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<!-- 🌸 SITE PRINCIPAL -->
+<div class="site" id="site">
+
+<header>
+    <nav>
+        <h1 class="logo">A Nous Deux</h1>
+
+        <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Souvenirs</a></li>
+            <li><a href="#">Photos</a></li>
+            <li><a href="#">Playlist</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="home">
+
+    <h2>Bienvenue sur notre site ❤️</h2>
+    <p>Notre espace à nous deux.</p>
+
+    <!-- 💖 STATS AMOUR -->
+    <section class="stats">
+
+        <div class="stat-box" id="daysBox">
+            <h3 id="daysTogether">0</h3>
+            <p>jours ensemble ❤️</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>20/02/2025</h3>
+            <p>notre date 💍</p>
+        </div>
+
+        <div class="stat-box">
+            <h3>∞</h3>
+            <p>amour</p>
+        </div>
+
+    </section>
+
+    <!-- 🌟 CARTES -->
+    <section class="reveal">
+        <a href="rencontre.html" class="card-scroll">
+            <h3>Notre première rencontre</h3>
+            <p>Un moment qui a tout changé ❤️</p>
+        </a>
+    </section>
+
+    <section class="reveal">
+        <a href="souvenirs.html" class="card-scroll">
+            <h3>Nos souvenirs</h3>
+            <p>Chaque instant compte avec toi.</p>
+        </a>
+    </section>
+
+    <section class="reveal">
+        <a href="avenir.html" class="card-scroll">
+            <h3>Notre avenir</h3>
+            <p>Encore plein de choses à vivre ensemble.</p>
+        </a>
+    </section>
+
+</main>
+
+<!-- 🤍 FOOTER ANIMÉ -->
+<footer class="bottom-footer">
+
+    <p class="footer-text">
+        Toujours et pour toujours mon amour ❤️
+    </p>
+
+</footer>
+
+</div>
+
+<!-- 🌟 INTRO -->
+<div class="intro" id="intro">
+
+    <div class="glass-card">
+
+        <p class="small-text">Bienvenue</p>
+
+        <h2>Nous deux ❤️</h2>
+
+        <p class="description">
+            Un site rien qu’à nous, rempli de souvenirs,
+            d’amour et de moments qu’on ne veut jamais oublier.
+        </p>
+
+        <button class="btn primary" id="enterBtn" type="button">
+            Entrer
+        </button>
+
+    </div>
+</div>
+
+<!-- 🔒 CODE -->
+<div class="lock-screen" id="lockScreen">
+
+    <div class="lock-box" id="lockBox">
+
+        <h2>Entrez le code</h2>
+
+        <div class="code-display" id="codeDisplay">
+            ______
+        </div>
+
+        <p class="error" id="errorText"></p>
+
+        <div class="keypad">
+
+            <button type="button" onclick="addNumber(1)">1</button>
+            <button type="button" onclick="addNumber(2)">2</button>
+            <button type="button" onclick="addNumber(3)">3</button>
+
+            <button type="button" onclick="addNumber(4)">4</button>
+            <button type="button" onclick="addNumber(5)">5</button>
+            <button type="button" onclick="addNumber(6)">6</button>
+
+            <button type="button" onclick="addNumber(7)">7</button>
+            <button type="button" onclick="addNumber(8)">8</button>
+            <button type="button" onclick="addNumber(9)">9</button>
+
+            <button type="button" onclick="clearCode()" class="clear">⌫</button>
+
+            <button type="button" onclick="addNumber(0)">0</button>
+
+            <button type="button" onclick="checkCode()" class="ok">
+                OK
+            </button>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
