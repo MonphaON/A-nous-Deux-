@@ -487,3 +487,26 @@ nav a:hover{
 .btn:active{
     transform: scale(0.97);
 }
+
+/* =========================
+   🔢 TOUCHES CLAVIER (CODE)
+========================= */
+
+.keypad button{
+    transition: all 0.12s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* hover (ordinateur) */
+.keypad button:hover{
+    transform: translateY(-2px) scale(1.05);
+    background: rgba(255, 255, 255, 0.18);
+}
+
+/* clic réel */
+.keypad button:active{
+    transform: scale(0.88);
+    background: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 0 12px rgba(255,255,255,0.15) inset;
+}
