@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vidéos 📸</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+
+    /* 🎬 thème cinéma sombre */
+    background: radial-gradient(circle at top, #141428, #070710);
+    color:white;
+    min-height:100vh;
+}
+
+/* 🌸 NAVBAR (identique) */
+header{
+    width:100%;
+    padding:25px 60px;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:100;
+    backdrop-filter: blur(15px);
+    background: rgba(0,0,0,0.35);
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:2rem;
+    font-weight:700;
+    background: linear-gradient(90deg,#ff80ab,#6c63ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    opacity:0.8;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#ff80ab;
+}
+
+/* 📺 CONTENU */
+.container{
+    padding-top:140px;
+    display:flex;
+    justify-content:center;
+}
+
+.box{
+    width:1100px;
+    max-width:92%;
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+p{
+    opacity:0.7;
+    margin-bottom:30px;
+}
+
+/* 🎬 GRILLE VIDEOS (style YouTube) */
+.video-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+/* 🧩 CARD VIDEO */
+.video-card{
+    cursor:pointer;
+    border-radius:18px;
+    overflow:hidden;
+    background: rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    transition:0.3s;
+}
+
+.video-card:hover{
+    transform:translateY(-6px);
+    background: rgba(255,255,255,0.1);
+}
+
+/* thumbnail */
+.thumb{
+    width:100%;
+    height:170px;
+    object-fit:cover;
+}
+
+/* texte */
+.video-info{
+    padding:15px;
+}
+
+.video-info h3{
+    font-size:1.1rem;
+    margin-bottom:5px;
+}
+
+.video-info p{
+    font-size:0.9rem;
+    opacity:0.6;
+    margin:0;
+}
+
+/* 🎥 PLAYER */
+.player-container{
+    display:none;
+    margin-top:30px;
+}
+
+video{
+    width:100%;
+    border-radius:18px;
+    outline:none;
+    background:black;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <h1 class="logo">A Nous Deux</h1>
+        <a href="index.html">Accueil</a>
+    </nav>
+</header>
+
+<div class="container">
+<div class="box">
+
+<h1>📸 Vidéos</h1>
+<p>Si tu as besoin de moi, regarde une vidéo ❤️</p>
+
+<!-- 🎬 GRILLE -->
+<div class="video-grid">
+
+    <div class="video-card" onclick="playVideo('video1.mp4')">
+        <img class="thumb" src="thumb1.jpg">
+        <div class="video-info">
+            <h3>Quand je pense à toi ❤️</h3>
+            <p>petit message pour toi</p>
+        </div>
+    </div>
+
+    <div class="video-card" onclick="playVideo('video2.mp4')">
+        <img class="thumb" src="thumb2.jpg">
+        <div class="video-info">
+            <h3>Je suis fier de toi 🌟</h3>
+            <p>mot doux</p>
+        </div>
+    </div>
+
+    <div class="video-card" onclick="playVideo('video3.mp4')">
+        <img class="thumb" src="thumb3.jpg">
+        <div class="video-info">
+            <h3>Juste pour sourire 😊</h3>
+            <p>petit moment chill</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- 🎥 PLAYER -->
+<div class="player-container" id="playerBox">
+    <video id="player" controls></video>
+</div>
+
+</div>
+</div>
+
+<script>
+function playVideo(src){
+
+    let player = document.getElementById("player");
+    let box = document.getElementById("playerBox");
+
+    player.src = src;
+    box.style.display = "block";
+
+    player.scrollIntoView({ behavior: "smooth" });
+
+    player.play();
+}
+</script>
+
+</body>
+</html>
