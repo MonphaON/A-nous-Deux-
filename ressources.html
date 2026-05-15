@@ -135,22 +135,29 @@
             gap: 25px;
         }
 
+        /* lien cliquable propre */
         .card-link{
             text-decoration: none;
             color: inherit;
+            display: block;
         }
 
+        /* UNE SEULE CLASSE POUR TOUTES LES CARTES */
         .mini-card{
             padding: 30px;
             border-radius: 20px;
             background: rgba(255,255,255,0.06);
             border: 1px solid rgba(255,255,255,0.1);
             transition: 0.3s;
+
+            height: 100%;
         }
 
-        .mini-card:hover{
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.1);
+        /* hover propre sur le lien */
+        .card-link:hover .mini-card{
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         .mini-card h3{
@@ -228,21 +235,21 @@
         <div class="mini-cards">
 
             <a href="histoires.html" class="card-link">
-                <div class="histoire">
+                <div class="mini-card">
                     <h3>Histoires✨</h3>
                     <p>Tes histoires pour te changer les idées ou t’endormir</p>
                 </div>
             </a>
 
             <a href="videos.html" class="card-link">
-                <div class="video">
+                <div class="mini-card">
                     <h3>Vidéos 📸</h3>
                     <p>Si je te manque et que tu as besoin de moi...</p>
                 </div>
             </a>
 
             <a href="travaux.html" class="card-link">
-                <div class="minicard">
+                <div class="mini-card">
                     <h3>Travaux ⚠️</h3>
                     <p>Encore en travaux</p>
                 </div>
