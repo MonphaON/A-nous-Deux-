@@ -653,3 +653,38 @@ nav a:hover{
     position: relative;
     overflow: visible;
 }
+
+/* =========================
+   💖 STACK DÉPLIABLE PROPRE (SANS OVERLAY)
+========================= */
+
+.stat-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+/* éléments cachés par défaut */
+.stat-extra{
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+
+    transform: scale(0.95);
+
+    transition: all 0.35s ease;
+}
+
+/* carte principale toujours normale */
+.main-stat{
+    z-index: 2;
+}
+
+/* ouverture au hover */
+.stat-wrapper:hover .stat-extra{
+    max-height: 200px;
+    opacity: 1;
+    transform: scale(1);
+    margin: 10px 0;
+}
