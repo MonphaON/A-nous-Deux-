@@ -11,13 +11,11 @@
 
 <div class="background"></div>
 
-<!-- 🌸 SITE PRINCIPAL -->
 <div class="site" id="site">
 
 <header>
     <nav>
         <h1 class="logo">A Nous Deux</h1>
-
         <ul>
             <li><a href="#">Accueil</a></li>
             <li><a href="ressources.html">Ressources</a></li>
@@ -32,23 +30,22 @@
     <h2>Bienvenue sur notre site ❤️</h2>
     <p>Notre espace à nous deux.</p>
 
-    <!-- 💖 STATS AMOUR -->
+    <!-- 💖 STATS -->
     <section class="stats">
 
-        <!-- WRAPPER jours + extensions -->
-        <div class="stat-wrapper">
+        <div class="stat-group" id="daysGroup">
 
-            <div class="stat-box clone-stat clone-top">
+            <div class="stat-box clone top">
                 <h3 id="hoursTogether">0</h3>
                 <p>heures ensemble ⏳</p>
             </div>
 
-            <div class="stat-box" id="daysBox">
+            <div class="stat-box main">
                 <h3 id="daysTogether">0</h3>
                 <p>jours ensemble ❤️</p>
             </div>
 
-            <div class="stat-box clone-stat clone-bottom">
+            <div class="stat-box clone bottom">
                 <h3 id="yearsTogether">0</h3>
                 <p>années ensemble 💍</p>
             </div>
@@ -67,7 +64,7 @@
 
     </section>
 
-    <!-- 🌟 CARTES -->
+    <!-- CARDS -->
     <section class="reveal">
         <a href="usa.html" class="card-scroll">
             <h3>Site des USA</h3>
@@ -75,84 +72,44 @@
         </a>
     </section>
 
-    <section class="reveal">
-        <a href="ressources.html" class="card-scroll">
-            <h3>Ressources</h3>
-            <p>Ici tu trouveras tout ce dont tu as besoin 😘</p>
-        </a>
-    </section>
-
-    <section class="reveal">
-        <a href="avenir.html" class="card-scroll">
-            <h3>Travaux</h3>
-            <p>Cette page est encore en construction ⚠️</p>
-        </a>
-    </section>
-
 </main>
 
-<!-- 🤍 FOOTER -->
 <footer class="bottom-footer">
-    <p class="footer-text">
-        Toujours et pour toujours mon amour ❤️
-    </p>
+    <p class="footer-text">Toujours et pour toujours mon amour ❤️</p>
 </footer>
 
 </div>
 
-<!-- 🌟 INTRO -->
+<!-- INTRO -->
 <div class="intro" id="intro">
-
     <div class="glass-card">
-
-        <p class="small-text">Bienvenue ma France</p>
-
         <h2>A Nous deux ❤️</h2>
-
-        <p class="description">
-            Un site rien qu’à nous, rempli de souvenirs et d’amour
-        </p>
-
-        <button class="btn primary" id="enterBtn" type="button">
-            Entrer
-        </button>
-
+        <button class="btn primary" id="enterBtn">Entrer</button>
     </div>
 </div>
 
-<!-- 🔒 CODE -->
+<!-- LOCK -->
 <div class="lock-screen" id="lockScreen">
-
     <div class="lock-box" id="lockBox">
-
         <h2>Entrez le code</h2>
 
-        <div class="code-display" id="codeDisplay">
-            ______
-        </div>
-
+        <div class="code-display" id="codeDisplay">______</div>
         <p class="error" id="errorText"></p>
 
         <div class="keypad">
-
             <button onclick="addNumber(1)">1</button>
             <button onclick="addNumber(2)">2</button>
             <button onclick="addNumber(3)">3</button>
-
             <button onclick="addNumber(4)">4</button>
             <button onclick="addNumber(5)">5</button>
             <button onclick="addNumber(6)">6</button>
-
             <button onclick="addNumber(7)">7</button>
             <button onclick="addNumber(8)">8</button>
             <button onclick="addNumber(9)">9</button>
-
-            <button class="clear" onclick="clearCode()">⌫</button>
+            <button onclick="clearCode()">⌫</button>
             <button onclick="addNumber(0)">0</button>
-            <button class="ok" onclick="checkCode()">OK</button>
-
+            <button onclick="checkCode()">OK</button>
         </div>
-
     </div>
 </div>
 
