@@ -265,7 +265,6 @@ nav a:hover{
     overflow: hidden;
 }
 
-/* overlay crème plus visible */
 .card-scroll::after{
     content: "";
     position: absolute;
@@ -328,36 +327,8 @@ nav a:hover{
     overflow: hidden;
 }
 
-/* 💬 texte animé style citation */
-.footer-quote{
-    font-size: 1.3rem;
-    font-weight: 500;
-
-    display: inline-block;
-    white-space: nowrap;
-
-    opacity: 0;
-    transform: translateX(-50px);
-
-    animation: footerQuoteReveal 2s ease forwards;
-}
-
-@keyframes footerQuoteReveal{
-    0%{
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    60%{
-        opacity: 0.6;
-    }
-    100%{
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
 /* =========================
-   💖 STATS PREMIUM FINAL
+   💖 STATS FIX PROPRE
 ========================= */
 
 .stats{
@@ -368,6 +339,34 @@ nav a:hover{
     margin-top: 40px;
 }
 
+/* wrapper du groupe jours */
+.stat-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* carte principale */
+.main-stat{
+    width: 220px;
+    padding: 28px 22px;
+
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    backdrop-filter: blur(12px);
+
+    text-align: center;
+
+    transition: all 0.35s ease;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* mêmes styles que stat-box */
 .stat-box{
     width: 220px;
     padding: 28px 22px;
@@ -381,42 +380,26 @@ nav a:hover{
 
     text-align: center;
 
-    position: relative;
-    overflow: hidden;
-
     transition: all 0.35s ease;
 
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
-.stat-box::before{
+.stat-box::before,
+.main-stat::before{
     content: "";
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-
     width: 70%;
     height: 2px;
-
     background: linear-gradient(90deg, #ff4d8d, #6c63ff);
-
     opacity: 0.5;
 }
 
-.stat-box:hover{
-    transform: translateY(-4px);
-
-    background: rgba(255, 255, 255, 0.06);
-
-    border-color: rgba(255, 255, 255, 0.12);
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,0.25),
-        0 0 25px rgba(255, 77, 141, 0.12);
-}
-
-.stat-box h3{
+.stat-box h3,
+.main-stat h3{
     font-size: 2.6rem;
     font-weight: 600;
 
@@ -427,48 +410,32 @@ nav a:hover{
     margin-bottom: 6px;
 }
 
-.stat-box p{
+.stat-box p,
+.main-stat p{
     font-size: 0.85rem;
     opacity: 0.65;
     letter-spacing: 0.6px;
 }
 
-/* clones hover stats */
-#daysBox{
-    position: relative;
-    overflow: visible;
-}
-
-.clone-stat{
-    position: absolute;
-    left: 0;
-    width: 100%;
-
+/* éléments cachés */
+.stat-extra{
+    max-height: 0;
     opacity: 0;
-    transform: scale(0.9);
+    overflow: hidden;
+
+    transform: translateY(-10px) scale(0.95);
 
     transition: all 0.35s ease;
-    pointer-events: none;
 }
 
-.clone-top{ top: -95px; }
-.clone-bottom{ bottom: -95px; }
-
-#daysBox:hover .clone-stat{
+/* ouverture au hover */
+.stat-wrapper:hover .stat-extra{
+    max-height: 120px;
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0) scale(1);
 }
 
-#daysBox:hover .clone-top{
-    transform: translateY(-8px) scale(1);
-}
-
-#daysBox:hover .clone-bottom{
-    transform: translateY(8px) scale(1);
-}
-
-/* effet bouton entrer et chiffres */
-
+/* effets bouton */
 .btn{
     padding: 15px 35px;
     border-radius: 50px;
@@ -477,214 +444,56 @@ nav a:hover{
     transition: all 0.25s ease;
 }
 
-/* hover doux + glow */
 .btn:hover{
     transform: translateY(-3px) scale(1.03);
     box-shadow: 0 10px 25px rgba(255, 77, 141, 0.35);
 }
 
-/* clic */
 .btn:active{
     transform: scale(0.97);
 }
 
-/* =========================
-   🔢 TOUCHES CLAVIER (CODE)
-========================= */
-
+/* keypad */
 .keypad button{
     transition: all 0.12s ease;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
 }
 
-/* hover (ordinateur) */
 .keypad button:hover{
     transform: translateY(-2px) scale(1.05);
-    background: rgba(255, 255, 255, 0.18);
+    background: rgba(255,255,255,0.18);
 }
 
-/* clic réel */
 .keypad button:active{
     transform: scale(0.88);
-    background: rgba(255, 255, 255, 0.28);
-    box-shadow: 0 0 12px rgba(255,255,255,0.15) inset;
 }
 
-/* =========================
-   📱 ADAPTATION MOBILE
-========================= */
+/* responsive */
+@media screen and (max-width: 768px){
 
-@media screen and (max-width: 768px) {
+    header{ padding: 15px 20px; }
 
-    /* NAVBAR */
-    header{
-        padding: 15px 20px;
-    }
-
-    nav ul{
-        gap: 15px;
-        font-size: 0.9rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    /* TITRES */
-    .home h2{
-        font-size: 1.6rem;
-    }
-
-    .home p{
-        font-size: 0.9rem;
-    }
-
-    /* STATS */
     .stats{
         flex-direction: column;
         align-items: center;
         gap: 15px;
     }
 
-    .stat-box{
+    .stat-box,
+    .main-stat{
         width: 90%;
-    }
-
-    /* CARDS */
-    .card-scroll{
-        width: 90%;
-        padding: 25px;
-    }
-
-    .card-scroll h3{
-        font-size: 1.4rem;
-    }
-
-    /* INTRO */
-    .glass-card{
-        padding: 30px 20px;
-        width: 95%;
-    }
-
-    /* LOCK SCREEN */
-    .lock-box{
-        width: 90%;
-        padding: 25px;
-    }
-
-    .keypad{
-        grid-template-columns: repeat(3, 70px);
-        gap: 8px;
-    }
-
-    .keypad button{
-        padding: 18px;
     }
 }
 
-/* =========================
-   📅 CARTE DATE AUTO-ADAPTATIVE
-========================= */
-
+/* date box */
 .date-box{
     width: auto;
     min-width: 220px;
     max-width: 320px;
-
     padding: 28px 22px;
-
-    white-space: nowrap; /* empêche le retour à la ligne */
-}
-
-/* ajuste la taille si ça devient trop long */
-.date-box h3{
-    font-size: clamp(1.4rem, 2vw, 2.6rem);
     white-space: nowrap;
 }
 
-/* =========================
-   💖 WRAPPER SAFE STATS
-========================= */
-
-.stat-wrapper{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-
-    padding-top: 120px; /* IMPORTANT : empêche overlap navbar */
-    padding-bottom: 120px;
-}
-
-/* bloc principal */
-.main-stat{
-    z-index: 2;
-}
-
-/* clones cachés par défaut */
-.clone-stat{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%) scale(0.9);
-
-    opacity: 0;
-    transition: all 0.3s ease;
-
-    pointer-events: none;
-}
-
-/* position contrôlée */
-.clone-top{
-    top: 0;
-}
-
-.clone-bottom{
-    bottom: 0;
-}
-
-/* hover active */
-.stat-wrapper:hover .clone-stat{
-    opacity: 1;
-    transform: translateX(-50%) scale(1);
-}
-
-/* empêche chevauchement général */
-.stats{
-    position: relative;
-    overflow: visible;
-}
-
-/* =========================
-   💖 STACK DÉPLIABLE PROPRE (SANS OVERLAY)
-========================= */
-
-.stat-wrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-}
-
-/* éléments cachés par défaut */
-.stat-extra{
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-
-    transform: scale(0.95);
-
-    transition: all 0.35s ease;
-}
-
-/* carte principale toujours normale */
-.main-stat{
-    z-index: 2;
-}
-
-/* ouverture au hover */
-.stat-wrapper:hover .stat-extra{
-    max-height: 200px;
-    opacity: 1;
-    transform: scale(1);
-    margin: 10px 0;
+.date-box h3{
+    font-size: clamp(1.4rem, 2vw, 2.6rem);
+    white-space: nowrap;
 }
