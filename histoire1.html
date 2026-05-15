@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Histoire 🌙</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+
+    /* 🌙 ambiance douce */
+    background: linear-gradient(180deg,#0b0b1a,#14143a);
+    color:white;
+    min-height:100vh;
+}
+
+/* NAVBAR IDENTIQUE */
+header{
+    width:100%;
+    padding:25px 60px;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:100;
+    backdrop-filter: blur(15px);
+    background: rgba(0,0,0,0.25);
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:2rem;
+    font-weight:700;
+    background: linear-gradient(90deg,#ff80ab,#fff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+nav ul{
+    display:flex;
+    gap:35px;
+    list-style:none;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+}
+
+/* CONTENU */
+.container{
+    padding-top:140px;
+    display:flex;
+    justify-content:center;
+}
+
+.box{
+    width:800px;
+    max-width:92%;
+}
+
+/* AUDIO */
+audio{
+    width:100%;
+    margin:25px 0;
+}
+
+/* TEXTE */
+.story{
+    background: rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:30px;
+    border-radius:20px;
+    line-height:1.8;
+    white-space:pre-line;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <h1 class="logo">A Nous Deux</h1>
+
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="histoires.html">Retour</a></li>
+            <li><a href="#">Vidéos</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+<div class="box">
+
+<h1>🌙 Histoire 1</h1>
+
+<!-- 🎧 AUDIO (ton fichier à toi) -->
+<audio controls>
+    <source src="histoire1.mp3" type="audio/mp3">
+    Ton navigateur ne supporte pas l'audio.
+</audio>
+
+<!-- 📖 TEXTE -->
+<div class="story">
+Il était une fois…
+
+(ici tu mets ton histoire écrite exactement comme tu veux)
+
+Et petit à petit, elle s’endort doucement, rassurée, en sécurité, en pensant à quelqu’un qui l’aime très fort ❤️
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
