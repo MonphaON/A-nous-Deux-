@@ -580,3 +580,23 @@ nav a:hover{
         padding: 18px;
     }
 }
+
+/* =========================
+   📅 CARTE DATE AUTO-ADAPTATIVE
+========================= */
+
+.date-box{
+    width: auto;
+    min-width: 220px;
+    max-width: 320px;
+
+    padding: 28px 22px;
+
+    white-space: nowrap; /* empêche le retour à la ligne */
+}
+
+/* ajuste la taille si ça devient trop long */
+.date-box h3{
+    font-size: clamp(1.4rem, 2vw, 2.6rem);
+    white-space: nowrap;
+}
