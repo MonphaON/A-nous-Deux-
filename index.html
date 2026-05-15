@@ -31,23 +31,23 @@
     <h2>Bienvenue sur notre site ❤️</h2>
     <p>Notre espace à nous deux.</p>
 
-    <!-- 💖 STATS AMOUR -->
+    <!-- 💖 STATS -->
     <section class="stats">
 
-        <!-- GROUPE STATS DÉPLIÉES -->
-        <div class="stat-group">
+        <!-- WRAPPER SAFE -->
+        <div class="stat-wrapper" id="daysWrapper">
 
-            <div class="stat-box clone top">
+            <div class="stat-box clone-stat clone-top">
                 <h3 id="hoursTogether">0</h3>
                 <p>heures ensemble ⏳</p>
             </div>
 
-            <div class="stat-box main">
+            <div class="stat-box main-stat" id="daysBox">
                 <h3 id="daysTogether">0</h3>
                 <p>jours ensemble ❤️</p>
             </div>
 
-            <div class="stat-box clone bottom">
+            <div class="stat-box clone-stat clone-bottom">
                 <h3 id="yearsTogether">0</h3>
                 <p>années ensemble 💍</p>
             </div>
@@ -96,30 +96,20 @@
 
 </div>
 
-<!-- INTRO -->
 <div class="intro" id="intro">
     <div class="glass-card">
-
-        <p class="small-text">Bienvenue ma France</p>
-
         <h2>A Nous deux ❤️</h2>
-
-        <p class="description">
-            Un site rien qu’à nous, rempli de souvenirs et d’amour
-        </p>
-
         <button class="btn primary" id="enterBtn">Entrer</button>
-
     </div>
 </div>
 
-<!-- LOCK -->
 <div class="lock-screen" id="lockScreen">
     <div class="lock-box" id="lockBox">
 
         <h2>Entrez le code</h2>
 
         <div class="code-display" id="codeDisplay">______</div>
+
         <p class="error" id="errorText"></p>
 
         <div class="keypad">
@@ -127,18 +117,15 @@
             <button onclick="addNumber(1)">1</button>
             <button onclick="addNumber(2)">2</button>
             <button onclick="addNumber(3)">3</button>
-
             <button onclick="addNumber(4)">4</button>
             <button onclick="addNumber(5)">5</button>
             <button onclick="addNumber(6)">6</button>
-
             <button onclick="addNumber(7)">7</button>
             <button onclick="addNumber(8)">8</button>
             <button onclick="addNumber(9)">9</button>
-
-            <button onclick="clearCode()">⌫</button>
+            <button class="clear" onclick="clearCode()">⌫</button>
             <button onclick="addNumber(0)">0</button>
-            <button onclick="checkCode()">OK</button>
+            <button class="ok" onclick="checkCode()">OK</button>
 
         </div>
 
