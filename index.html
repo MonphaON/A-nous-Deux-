@@ -35,15 +35,30 @@
     <!-- 💖 STATS AMOUR -->
     <section class="stats">
 
-        <div class="stat-box" id="daysBox">
-            <h3 id="daysTogether">0</h3>
-            <p>jours ensemble ❤️</p>
+        <!-- WRAPPER jours + extensions -->
+        <div class="stat-wrapper">
+
+            <div class="stat-box clone-stat clone-top">
+                <h3 id="hoursTogether">0</h3>
+                <p>heures ensemble ⏳</p>
+            </div>
+
+            <div class="stat-box" id="daysBox">
+                <h3 id="daysTogether">0</h3>
+                <p>jours ensemble ❤️</p>
+            </div>
+
+            <div class="stat-box clone-stat clone-bottom">
+                <h3 id="yearsTogether">0</h3>
+                <p>années ensemble 💍</p>
+            </div>
+
         </div>
 
         <div class="stat-box date-box">
-    <h3>20/02/25</h3>
-    <p>notre date 💍</p>
-</div>
+            <h3>20/02/25</h3>
+            <p>notre date 💍</p>
+        </div>
 
         <div class="stat-box">
             <h3>∞</h3>
@@ -63,26 +78,24 @@
     <section class="reveal">
         <a href="ressources.html" class="card-scroll">
             <h3>Ressources</h3>
-            <p>Ici du trouveras tout ce dont tu as besoin ma chérie 😘</p>
+            <p>Ici tu trouveras tout ce dont tu as besoin 😘</p>
         </a>
     </section>
 
     <section class="reveal">
         <a href="avenir.html" class="card-scroll">
-            <h3>Travaux </h3>
+            <h3>Travaux</h3>
             <p>Cette page est encore en construction ⚠️</p>
         </a>
     </section>
 
 </main>
 
-<!-- 🤍 FOOTER ANIMÉ -->
+<!-- 🤍 FOOTER -->
 <footer class="bottom-footer">
-
     <p class="footer-text">
         Toujours et pour toujours mon amour ❤️
     </p>
-
 </footer>
 
 </div>
@@ -97,8 +110,7 @@
         <h2>A Nous deux ❤️</h2>
 
         <p class="description">
-            Un site rien qu’à nous, rempli de souvenirs,
-            d’amour et de petits trucs rien que pour toi 
+            Un site rien qu’à nous, rempli de souvenirs et d’amour
         </p>
 
         <button class="btn primary" id="enterBtn" type="button">
@@ -123,25 +135,21 @@
 
         <div class="keypad">
 
-            <button type="button" onclick="addNumber(1)">1</button>
-            <button type="button" onclick="addNumber(2)">2</button>
-            <button type="button" onclick="addNumber(3)">3</button>
+            <button onclick="addNumber(1)">1</button>
+            <button onclick="addNumber(2)">2</button>
+            <button onclick="addNumber(3)">3</button>
 
-            <button type="button" onclick="addNumber(4)">4</button>
-            <button type="button" onclick="addNumber(5)">5</button>
-            <button type="button" onclick="addNumber(6)">6</button>
+            <button onclick="addNumber(4)">4</button>
+            <button onclick="addNumber(5)">5</button>
+            <button onclick="addNumber(6)">6</button>
 
-            <button type="button" onclick="addNumber(7)">7</button>
-            <button type="button" onclick="addNumber(8)">8</button>
-            <button type="button" onclick="addNumber(9)">9</button>
+            <button onclick="addNumber(7)">7</button>
+            <button onclick="addNumber(8)">8</button>
+            <button onclick="addNumber(9)">9</button>
 
-            <button type="button" onclick="clearCode()" class="clear">⌫</button>
-
-            <button type="button" onclick="addNumber(0)">0</button>
-
-            <button type="button" onclick="checkCode()" class="ok">
-                OK
-            </button>
+            <button class="clear" onclick="clearCode()">⌫</button>
+            <button onclick="addNumber(0)">0</button>
+            <button class="ok" onclick="checkCode()">OK</button>
 
         </div>
 
