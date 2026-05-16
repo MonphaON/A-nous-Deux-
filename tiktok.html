@@ -14,71 +14,53 @@
     box-sizing:border-box;
 }
 
-html{
+html, body{
+    height:100%;
+    background:black;
+    font-family:'Poppins', sans-serif;
+    overflow:hidden;
+}
+
+/* FEED */
+#feed{
+    height:100vh;
+    overflow-y:auto;
     scroll-snap-type:y mandatory;
 }
 
-body{
-    font-family:'Poppins', sans-serif;
-    background:black;
-    overflow-y:scroll;
-    height:100vh;
-    color:white;
-}
-
-body::-webkit-scrollbar{
-    display:none;
-}
-
-/* VIDEOS */
 .video-container{
     position:relative;
-    width:100%;
     height:100vh;
+    width:100%;
     scroll-snap-align:start;
-    overflow:hidden;
 }
 
 video{
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit:contain;
 }
 
+/* overlay */
 .overlay{
     position:absolute;
     inset:0;
-    background:linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0.1),rgba(0,0,0,0.3));
-}
-
-/* TOP */
-.top-bar{
-    position:fixed;
-    top:0;
-    width:100%;
-    text-align:center;
-    padding:18px;
-    z-index:100;
-    backdrop-filter:blur(10px);
+    background:linear-gradient(to top,rgba(0,0,0,0.75),rgba(0,0,0,0.1),rgba(0,0,0,0.3));
 }
 
 /* LEFT */
 .left-info{
     position:absolute;
-    bottom:110px;
+    bottom:120px;
     left:15px;
-    width:70%;
+    color:white;
 }
 
-.username{font-size:18px;font-weight:600;}
-.description{font-size:14px;}
-.music{font-size:13px;margin-top:8px;opacity:0.9;}
-
-/* RIGHT ICONS */
+/* RIGHT */
 .right-icons{
     position:absolute;
     right:12px;
-    bottom:110px;
+    bottom:120px;
     display:flex;
     flex-direction:column;
     gap:18px;
@@ -88,7 +70,7 @@ video{
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:6px;
+    gap:5px;
 }
 
 .icon{
@@ -99,407 +81,419 @@ video{
     display:flex;
     justify-content:center;
     align-items:center;
-    font-size:24px;
+    font-size:22px;
     cursor:pointer;
     transition:0.2s;
-}
-
-.icon:hover{transform:scale(1.1);}
-
-.like-active{
-    background:rgba(255,0,90,0.55);
-    transform:scale(1.2);
-}
-
-.favorite-active{
-    background:rgba(255,215,0,0.55);
-    transform:scale(1.2);
+    color:white;
 }
 
 .icon-text{
     font-size:13px;
-}
-
-/* HEART ANIMATION */
-.heart-float{
-    position:fixed;
-    font-size:26px;
-    animation:floatUp 0.9s ease forwards;
-    pointer-events:none;
-    z-index:9999;
-}
-
-@keyframes floatUp{
-    0%{opacity:1;transform:translateY(0) scale(1);}
-    100%{opacity:0;transform:translateY(-120px) scale(1.6);}
-}
-
-/* COMMENTS */
-.comments-panel{
-    position:fixed;
-    top:0;
-    right:-100%;
-    width:85%;
-    max-width:420px;
-    height:100vh;
-    background:#fff;
-    color:#000;
-    transition:0.35s ease;
-    z-index:999;
-    display:flex;
-    flex-direction:column;
-}
-
-.comments-panel.active{
-    right:0;
-}
-
-.comments-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px;
-    border-bottom:1px solid #eee;
-}
-
-.comments-title{
-    font-size:18px;
-    font-weight:700;
-}
-
-.close-comments{
-    font-size:26px;
-    cursor:pointer;
-}
-
-#commentsList{
-    flex:1;
-    overflow-y:auto;
-    padding:15px;
-}
-
-.comment{
-    background:#f2f2f2;
-    padding:10px 12px;
-    border-radius:12px;
-    margin-bottom:10px;
-    animation:commentPop 0.25s ease;
-}
-
-.comment-user{
-    font-weight:600;
-    font-size:13px;
-    margin-bottom:4px;
-}
-
-.comment-input-area{
-    display:flex;
-    gap:10px;
-    padding:12px;
-    border-top:1px solid #eee;
-}
-
-.comment-input-area input{
-    flex:1;
-    padding:10px;
-    border-radius:20px;
-    border:1px solid #ccc;
-    outline:none;
-}
-
-.comment-input-area button{
-    background:#ff2d55;
     color:white;
-    border:none;
-    padding:10px 14px;
+}
+
+/* 🔥 LIKE ULTRA FX */
+.like-active{
+    background:rgba(255,0,90,0.65);
+    animation:likePop 0.35s ease;
+    transform:scale(1.2);
+    box-shadow:0 0 18px rgba(255,0,90,0.7);
+}
+
+@keyframes likePop{
+    0%{transform:scale(1);}
+    40%{transform:scale(1.45);}
+    70%{transform:scale(1.1);}
+    100%{transform:scale(1.2);}
+}
+
+/* ⭐ FAVORITE ULTRA FX */
+.favorite-active{
+    background:rgba(255,215,0,0.65);
+    animation:favSpin 0.5s ease;
+    transform:scale(1.15);
+    box-shadow:0 0 20px rgba(255,215,0,0.9);
+}
+
+@keyframes favSpin{
+    0%{transform:scale(1) rotate(0deg);}
+    40%{transform:scale(1.35) rotate(12deg);}
+    70%{transform:scale(1.1) rotate(-8deg);}
+    100%{transform:scale(1.15) rotate(0deg);}
+}
+
+/* SOUND */
+.sound-btn{
+    position:absolute;
+    top:20px;
+    right:20px;
+    background:rgba(0,0,0,0.5);
+    padding:8px 12px;
     border-radius:20px;
+    font-size:14px;
     cursor:pointer;
+    color:white;
+    z-index:10;
 }
 
-@keyframes commentPop{
-    0%{transform:scale(0.8);opacity:0;}
-    50%{transform:scale(1.05);opacity:1;}
-    100%{transform:scale(1);}
-}
-
-/* BOTTOM NAV */
+/* NAV */
 .bottom-nav{
     position:fixed;
     bottom:0;
     left:0;
     width:100%;
     height:70px;
-    background:rgba(0,0,0,0.75);
-    backdrop-filter:blur(15px);
+    background:rgba(0,0,0,0.85);
+    backdrop-filter:blur(12px);
     display:flex;
     justify-content:space-around;
     align-items:center;
-    z-index:100;
+    color:white;
     border-top:1px solid rgba(255,255,255,0.1);
+    z-index:1000;
 }
 
-.nav-item{
+/* ❤️ DOUBLE TAP */
+.heart-pop{
+    position:absolute;
+    font-size:80px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) scale(0);
+    animation:popHeart 0.6s ease;
+    pointer-events:none;
+    z-index:9999;
     color:white;
-    text-decoration:none;
-    font-size:12px;
+    text-shadow:0 0 20px rgba(255,0,90,0.8);
+}
+
+@keyframes popHeart{
+    0%{transform:translate(-50%,-50%) scale(0);}
+    30%{transform:translate(-50%,-50%) scale(1.3);}
+    60%{transform:translate(-50%,-50%) scale(1);}
+    100%{transform:translate(-50%,-50%) scale(0);}
+}
+
+/* 💬 PANEL COMMENTAIRES */
+#commentPanel{
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:100%;
+    max-width:380px;
+    height:100%;
+    background:white;
+    color:black;
     display:flex;
     flex-direction:column;
-    align-items:center;
-    gap:4px;
-    opacity:0.85;
+    transition:0.35s ease;
+    z-index:9999;
+    border-top-left-radius:18px;
+    border-bottom-left-radius:18px;
+    overflow:hidden;
 }
 
-.nav-icon{font-size:20px;}
+#commentPanel.active{
+    right:0;
+}
+
+.comment-header{
+    padding:12px;
+    text-align:center;
+    font-weight:600;
+    border-bottom:1px solid #eee;
+    position:relative;
+}
+
+/* CROIX */
+.close-btn{
+    position:absolute;
+    right:12px;
+    top:10px;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    font-size:18px;
+    background:#f2f2f2;
+}
+
+.comment-list{
+    flex:1;
+    overflow-y:auto;
+    padding:15px;
+}
+
+.comment{
+    background:#f4f4f4;
+    padding:10px 12px;
+    border-radius:14px;
+    margin-bottom:10px;
+    font-size:14px;
+    animation:pop 0.2s ease;
+}
+
+@keyframes pop{
+    from{transform:scale(0.95); opacity:0;}
+    to{transform:scale(1); opacity:1;}
+}
+
+.comment-input{
+    display:flex;
+    padding:10px;
+    border-top:1px solid #eee;
+    background:white;
+}
+
+.comment-input input{
+    flex:1;
+    padding:10px 12px;
+    border:none;
+    background:#f2f2f2;
+    border-radius:20px;
+    outline:none;
+}
+
+.comment-input button{
+    margin-left:8px;
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    background:#ff2d55;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
 </style>
 </head>
 
 <body>
 
-<div class="top-bar">Pour Toi ❤️</div>
+<div id="feed"></div>
 
-<!-- VIDEOS -->
-<div class="video-container">
-    <video src="2026-05-16-145429213.mp4" loop muted playsinline></video>
-    <div class="overlay"></div>
+<!-- COMMENT PANEL -->
+<div id="commentPanel">
+    <div class="comment-header">
+        Commentaires 💬
 
-    <div class="left-info">
-        <div class="username">@toi ❤️</div>
-        <div class="description">Moment magique ✨</div>
-        <div class="music">🎵 Love</div>
+        <!-- CROIX AJOUTÉE -->
+        <div class="close-btn" onclick="closeComments()">✕</div>
+
     </div>
 
-    <div class="right-icons">
-        <div class="icon-box">
-            <div class="icon like-btn">❤️</div>
-            <div class="icon-text like-text">999</div>
-        </div>
-        <div class="icon-box">
-            <div class="icon comment-btn">💬</div>
-            <div class="icon-text comment-text">3</div>
-        </div>
-        <div class="icon-box">
-            <div class="icon favorite-btn">⭐</div>
-            <div class="icon-text">Fav</div>
-        </div>
+    <div class="comment-list" id="commentList"></div>
+
+    <div class="comment-input">
+        <input id="commentInput" placeholder="Ajouter un commentaire...">
+        <button onclick="sendComment()">➤</button>
     </div>
 </div>
 
-<div class="video-container">
-    <video src="videos/video2.mp4" loop muted playsinline></video>
-    <div class="overlay"></div>
-
-    <div class="left-info">
-        <div class="username">@toi ❤️</div>
-        <div class="description">Encore nous 🥹</div>
-        <div class="music">🎵 Song</div>
-    </div>
-
-    <div class="right-icons">
-        <div class="icon-box">
-            <div class="icon like-btn">❤️</div>
-            <div class="icon-text like-text">1,2k</div>
-        </div>
-        <div class="icon-box">
-            <div class="icon comment-btn">💬</div>
-            <div class="icon-text comment-text">4</div>
-        </div>
-        <div class="icon-box">
-            <div class="icon favorite-btn">⭐</div>
-            <div class="icon-text">Fav</div>
-        </div>
-    </div>
-</div>
-
-<div class="video-container">
-    <video src="videos/video3.mp4" loop muted playsinline></video>
-    <div class="overlay"></div>
-
-    <div class="left-info">
-        <div class="username">@toi ❤️</div>
-        <div class="description">Souvenirs 🌙</div>
-        <div class="music">🎵 Slow</div>
-    </div>
-
-    <div class="right-icons">
-        <div class="icon-box">
-            <div class="icon like-btn">❤️</div>
-            <div class="icon-text like-text">2,4k</div>
-        </div>
-        <div class="icon-box">
-            <div class="icon comment-btn">💬</div>
-            <div class="icon-text comment-text">5</div>
-        </div>
-        <div class="icon-box">
-            <div class="icon favorite-btn">⭐</div>
-            <div class="icon-text">Fav</div>
-        </div>
-    </div>
-</div>
-
-<!-- COMMENTS -->
-<div class="comments-panel" id="commentsPanel">
-
-    <div class="comments-header">
-        <div class="comments-title">Commentaires</div>
-        <div class="close-comments" id="closeComments">✕</div>
-    </div>
-
-    <div id="commentsList">
-        <div class="comment">
-            <div class="comment-user">France ❤️</div>
-            <div>J’aime trop 🥹</div>
-        </div>
-    </div>
-
-    <div class="comment-input-area">
-        <input id="commentInput" placeholder="Écris un commentaire..." />
-        <button id="sendComment">Envoyer</button>
-    </div>
-
-</div>
-
-<!-- BOTTOM NAV -->
 <div class="bottom-nav">
-    <a href="index.html" class="nav-item">
-        <div class="nav-icon">🏠</div>
-        <span>Accueil</span>
-    </a>
-    <a href="video.html" class="nav-item">
-        <div class="nav-icon">🎬</div>
-        <span>Vidéos</span>
-    </a>
-    <a href="tiktok.html" class="nav-item">
-        <div class="nav-icon">❤️</div>
-        <span>Pour Toi</span>
-    </a>
+    <div>🏠 Accueil</div>
+    <div>🎬 Vidéos</div>
+    <div>❤️ Pour toi</div>
 </div>
-
-<!-- SOUND -->
-<audio id="popSound" src="https://assets.mixkit.co/sfx/preview/mixkit-interface-click-1126.mp3"></audio>
 
 <script>
 
-const containers = document.querySelectorAll('.video-container');
-const popSound = document.getElementById('popSound');
+const videos = [
+{src:"tik.mp4", desc:"Moment magique ✨"},
+{src:"videos/video2.mp4", desc:"Encore nous 🥹"},
+{src:"tik.mp4", desc:"Souvenirs 🌙"}
+];
 
-/* UNLOCK AUDIO */
-document.addEventListener('click', () => {
-    popSound.play().then(() => {
-        popSound.pause();
-        popSound.currentTime = 0;
-    }).catch(()=>{});
-}, { once: true });
+const feed = document.getElementById("feed");
 
-function updateLike(container, delta){
-    const counter = container.querySelector('.like-text');
-    let val = parseFloat(counter.innerText.replace('k','').replace(',','.')) || 0;
+let currentVideoIndex = 0;
+let comments = {};
 
-    val += delta;
-    if(val < 0) val = 0;
+videos.forEach((v,i)=>{
+comments[i] = [];
 
-    counter.innerText = val >= 1000
-        ? (val/1000).toFixed(1).replace('.',',') + 'k'
-        : Math.floor(val);
+feed.innerHTML += `
+<div class="video-container" data-index="${i}">
+
+<video src="${v.src}" loop playsinline muted></video>
+
+<div class="overlay"></div>
+<div class="sound-btn">🔇</div>
+
+<div class="left-info">
+<div class="username">@toi ❤️</div>
+<div class="description">${v.desc}</div>
+</div>
+
+<div class="right-icons">
+
+<div class="icon-box">
+<div class="icon like-btn">❤️</div>
+<div class="icon-text like-count">0</div>
+</div>
+
+<div class="icon-box">
+<div class="icon comment-btn">💬</div>
+<div class="icon-text comment-count">0</div>
+</div>
+
+<div class="icon-box">
+<div class="icon favorite-btn">⭐</div>
+<div class="icon-text">Fav</div>
+</div>
+
+</div>
+
+</div>`;
+});
+
+/* SCROLL */
+const containers = document.querySelectorAll(".video-container");
+
+const observer = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+const video = entry.target.querySelector("video");
+const index = entry.target.dataset.index;
+
+if(entry.isIntersecting){
+currentVideoIndex = index;
+
+document.querySelectorAll("video").forEach(v=>{
+if(v!==video){ v.pause(); v.muted = true; }
+});
+
+video.play().catch(()=>{});
 }
+});
+},{threshold:0.8});
 
-function updateComment(container, delta){
-    const counter = container.querySelector('.comment-text');
-    let val = parseInt(counter.innerText) || 0;
-    val += delta;
-    counter.innerText = val;
+containers.forEach(c=>observer.observe(c));
+
+/* SOUND */
+document.addEventListener("click",(e)=>{
+if(e.target.classList.contains("sound-btn")){
+const video = e.target.closest(".video-container").querySelector("video");
+video.muted = !video.muted;
+e.target.textContent = video.muted ? "🔇" : "🔊";
+video.play();
 }
+});
 
-/* VIDEOS + DOUBLE TAP */
-containers.forEach(container => {
+/* LIKE */
+document.addEventListener("click",(e)=>{
+if(e.target.classList.contains("like-btn")){
 
-    const video = container.querySelector('video');
-    const likeBtn = container.querySelector('.like-btn');
-    const favBtn = container.querySelector('.favorite-btn');
+const box = e.target.closest(".icon-box");
+const countEl = box.querySelector(".like-count");
 
-    let clickTimer = null;
+let n = parseInt(countEl.textContent);
 
-    video.addEventListener('click', () => {
+e.target.classList.toggle("like-active");
 
-        if(clickTimer === null){
-            clickTimer = setTimeout(() => {
-                clickTimer = null;
-                video.paused ? video.play() : video.pause();
-            }, 250);
-        } else {
-            clearTimeout(clickTimer);
-            clickTimer = null;
+n = e.target.classList.contains("like-active") ? n+1 : n-1;
 
-            likeBtn.classList.add('like-active');
-            updateLike(container, 1);
+countEl.textContent = n;
+}
+});
 
-            // ❤️ animation
-            const rect = likeBtn.getBoundingClientRect();
-            const heart = document.createElement('div');
-            heart.classList.add('heart-float');
-            heart.innerText = '❤️';
-            heart.style.left = rect.left + 'px';
-            heart.style.top = rect.top + 'px';
-
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 900);
-        }
-    });
-
-    likeBtn.addEventListener('click', () => {
-        const active = likeBtn.classList.contains('like-active');
-        likeBtn.classList.toggle('like-active');
-        updateLike(container, active ? -1 : 1);
-    });
-
-    favBtn.addEventListener('click', () => {
-        favBtn.classList.toggle('favorite-active');
-    });
+/* FAVORITE */
+document.addEventListener("click",(e)=>{
+if(e.target.classList.contains("favorite-btn")){
+e.target.classList.toggle("favorite-active");
+}
 });
 
 /* COMMENTS */
-const panel = document.getElementById('commentsPanel');
-const list = document.getElementById('commentsList');
-const input = document.getElementById('commentInput');
-
-let activeContainer = null;
-
-document.querySelectorAll('.comment-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        activeContainer = btn.closest('.video-container');
-        panel.classList.add('active');
-    });
+document.addEventListener("click",(e)=>{
+if(e.target.classList.contains("comment-btn")){
+const video = e.target.closest(".video-container");
+currentVideoIndex = video.dataset.index;
+openComments(currentVideoIndex);
+}
 });
 
-document.getElementById('closeComments').onclick = () => {
-    panel.classList.remove('active');
-};
+function openComments(i){
+const panel = document.getElementById("commentPanel");
+const list = document.getElementById("commentList");
 
-document.getElementById('sendComment').onclick = () => {
+list.innerHTML = "";
 
-    const text = input.value.trim();
-    if(!text || !activeContainer) return;
+comments[i].forEach(c=>{
+const div = document.createElement("div");
+div.className="comment";
+div.textContent=c;
+list.appendChild(div);
+});
 
-    const div = document.createElement('div');
-    div.className = 'comment';
-    div.innerHTML = `
-        <div class="comment-user">@toi</div>
-        <div>${text}</div>
-    `;
+panel.classList.add("active");
+}
 
-    list.prepend(div);
-    input.value = "";
+function sendComment(){
 
-    updateComment(activeContainer, 1);
+const input = document.getElementById("commentInput");
+const text = input.value.trim();
+if(!text) return;
 
-    // 🔊 SOUND
-    popSound.currentTime = 0;
-    popSound.play().catch(()=>{});
-};
+comments[currentVideoIndex].push(text);
 
-input.addEventListener('keydown', (e) => {
-    if(e.key === 'Enter'){
-        document.getElementById('sendComment').click();
-    }
+const list = document.getElementById("commentList");
+
+const div = document.createElement("div");
+div.className="comment";
+div.textContent=text;
+
+list.appendChild(div);
+
+const videoEl = document.querySelector(`.video-container[data-index="${currentVideoIndex}"]`);
+const countEl = videoEl.querySelector(".comment-count");
+
+countEl.textContent = parseInt(countEl.textContent)+1;
+
+input.value="";
+}
+
+/* CLOSE COMMENTS */
+function closeComments(){
+document.getElementById("commentPanel").classList.remove("active");
+}
+
+/* DOUBLE TAP LIKE */
+document.querySelectorAll(".video-container").forEach(container=>{
+
+let lastTap = 0;
+
+container.addEventListener("click",(e)=>{
+
+if(e.target.closest(".icon") || e.target.classList.contains("sound-btn")) return;
+
+const now = Date.now();
+if(now - lastTap < 300){
+
+const likeBtn = container.querySelector(".like-btn");
+const countEl = container.querySelector(".like-count");
+
+let n = parseInt(countEl.textContent);
+
+if(!likeBtn.classList.contains("like-active")){
+likeBtn.classList.add("like-active");
+countEl.textContent = n + 1;
+}
+
+const heart = document.createElement("div");
+heart.className = "heart-pop";
+heart.innerHTML = "❤️";
+container.appendChild(heart);
+
+setTimeout(()=>heart.remove(),600);
+}
+
+lastTap = now;
+
+});
+
 });
 
 </script>
