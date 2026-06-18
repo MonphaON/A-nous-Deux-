@@ -102,3 +102,13 @@ function revealOnScroll() {
 
 window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
+
+function openTimeline(title, text){
+    document.getElementById("popupTitle").textContent = title;
+    document.getElementById("popupText").textContent = text;
+    document.getElementById("timelinePopup").style.display = "flex";
+}
+
+function closeTimeline(){
+    document.getElementById("timelinePopup").style.display = "none";
+}
