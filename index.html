@@ -4,36 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Nous Deux ❤️</title>
+
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="logo du site.png" type="image/png">
-<meta name="theme-color" content="#ff4d6d">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#ff4d6d">
 </head>
 
-    <script>
+<script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./service-worker.js');
 }
 </script>
 
-<div class="timeline-popup" id="timelinePopup" onclick="closeTimeline()">
-    <div class="timeline-popup-content" onclick="event.stopPropagation()">
-
-        <span class="close-btn" onclick="closeTimeline()">✕</span>
-
-        <h2 id="popupTitle"></h2>
-        <p id="popupText"></p>
-
-    </div>
-</div>
-    
 <body>
 
 <div class="background"></div>
 
+<!-- 💖 SITE -->
 <div class="site" id="site">
 
 <header>
@@ -54,27 +43,26 @@ if ('serviceWorker' in navigator) {
     <h2>Bienvenue sur notre site ❤️</h2>
     <p>France et Raphaël</p>
 
-    <!-- 💖 STATS -->
+    <!-- STATS -->
     <section class="stats">
+        <div class="stat-wrapper">
 
-       <div class="stat-wrapper">
+            <div class="stat-box stat-extra">
+                <h3 id="hoursTogether">0</h3>
+                <p>heures ensemble ⏳</p>
+            </div>
 
-    <div class="stat-box stat-extra">
-        <h3 id="hoursTogether">0</h3>
-        <p>heures ensemble ⏳</p>
-    </div>
+            <div class="stat-box main-stat">
+                <h3 id="daysTogether">0</h3>
+                <p>jours ensemble ❤️</p>
+            </div>
 
-    <div class="stat-box main-stat">
-        <h3 id="daysTogether">0</h3>
-        <p>jours ensemble ❤️</p>
-    </div>
+            <div class="stat-box stat-extra">
+                <h3 id="yearsTogether">0</h3>
+                <p>années ensemble 💍</p>
+            </div>
 
-    <div class="stat-box stat-extra">
-        <h3 id="yearsTogether">0</h3>
-        <p>années ensemble 💍</p>
-    </div>
-
-</div>
+        </div>
 
         <div class="stat-box date-box">
             <h3>20/02/25</h3>
@@ -85,7 +73,6 @@ if ('serviceWorker' in navigator) {
             <h3>∞</h3>
             <p>amour</p>
         </div>
-
     </section>
 
     <!-- CARDS -->
@@ -112,21 +99,21 @@ if ('serviceWorker' in navigator) {
 
 </main>
 
-<!-- 💖 TIMELINE -->
+<!-- TIMELINE -->
 <section class="timeline-section">
     <h2>Notre Histoire ❤️</h2>
 
     <div class="timeline">
 
-        <div class="timeline-item" onclick="openTimeline('Rencontre ✈️','Le jour où tout a commencé grâce à notre passion commune ❤️')">
+        <div class="timeline-item" onclick="openTimeline('Rencontre ✈️','Le jour où tout a commencé ❤️')">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
                 <h3>Rencontre ✈️</h3>
-                <p>Le début de notre histoire</p>
+                <p>Début</p>
             </div>
         </div>
 
-        <div class="timeline-item" onclick="openTimeline('20 Février 2025 ❤️','Le jour où on s’est mis ensemble. Le plus beau jour ❤️')">
+        <div class="timeline-item" onclick="openTimeline('20 Février 2025 ❤️','Notre plus beau jour')">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
                 <h3>20 Février 2025 ❤️</h3>
@@ -134,30 +121,32 @@ if ('serviceWorker' in navigator) {
             </div>
         </div>
 
-        <div class="timeline-item" onclick="openTimeline('Premier voyage 🌍','Un moment gravé à jamais dans nos souvenirs ❤️')">
+        <div class="timeline-item" onclick="openTimeline('Premier voyage 🌍','Inoubliable ❤️')">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
                 <h3>Premier voyage 🌍</h3>
-                <p>Des souvenirs forts</p>
+                <p>Souvenirs</p>
             </div>
         </div>
 
-        <div class="timeline-item" onclick="openTimeline('Aujourd’hui 💍','Et ce n’est que le début de notre histoire ❤️')">
+        <div class="timeline-item" onclick="openTimeline('Aujourd’hui 💍','Toujours ensemble ❤️')">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
                 <h3>Aujourd’hui 💍</h3>
-                <p>Encore ensemble</p>
+                <p>Maintenant</p>
             </div>
         </div>
 
     </div>
 </section>
+
 <footer class="bottom-footer">
-    <p class="footer-text">Toujours et pour toujours mon amour ❤️</p>
+    <p>Toujours et pour toujours ❤️</p>
 </footer>
 
 </div>
 
+<!-- 🔥 INTRO -->
 <div class="intro" id="intro">
     <div class="glass-card">
         <h2>A Nous deux ❤️</h2>
@@ -165,8 +154,11 @@ if ('serviceWorker' in navigator) {
     </div>
 </div>
 
+<!-- 🔒 LOCK SCREEN (MODIFIÉ + CADENAS) -->
 <div class="lock-screen" id="lockScreen">
     <div class="lock-box" id="lockBox">
+
+        <div class="lock-icon" id="lockIcon">🔒</div>
 
         <h2>Entre le code</h2>
 
@@ -175,7 +167,6 @@ if ('serviceWorker' in navigator) {
         <p class="error" id="errorText"></p>
 
         <div class="keypad">
-
             <button onclick="addNumber(1)">1</button>
             <button onclick="addNumber(2)">2</button>
             <button onclick="addNumber(3)">3</button>
@@ -188,18 +179,12 @@ if ('serviceWorker' in navigator) {
             <button class="clear" onclick="clearCode()">⌫</button>
             <button onclick="addNumber(0)">0</button>
             <button class="ok" onclick="checkCode()">OK</button>
-
         </div>
 
     </div>
 </div>
 
 <script src="script.js"></script>
-    <script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js');
-}
-</script>
 
 </body>
 </html>
