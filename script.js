@@ -8,12 +8,29 @@ const site = document.getElementById("site");
 
 const codeDisplay = document.getElementById("codeDisplay");
 const errorText = document.getElementById("errorText");
+const lockIcon = document.getElementById("lockIcon");
 
+/* =========================
+   AUTO UNLOCK (SESSION)
+========================= */
+if (sessionStorage.getItem("unlocked") === "true") {
+    lockScreen.style.display = "none";
+    intro.style.display = "none";
+    site.style.display = "block";
+    site.style.opacity = "1";
+}
+
+/* =========================
+   INTRO BUTTON
+========================= */
 document.getElementById("enterBtn").addEventListener("click", () => {
     intro.style.display = "none";
     lockScreen.style.display = "flex";
 });
 
+/* =========================
+   KEYPAD
+========================= */
 function addNumber(num) {
     if (code.length < 6) {
         code += num;
@@ -31,26 +48,54 @@ function updateDisplay() {
     errorText.textContent = "";
 }
 
+/* =========================
+   WRONG EFFECT
+========================= */
 function wrongEffect() {
     errorText.textContent = "Code incorrect ❌";
+
+    lockBox.classList.remove("shake");
+    void lockBox.offsetWidth;
     lockBox.classList.add("shake");
+}
+
+/* =========================
+   SUCCESS EFFECT + CADENAS
+========================= */
+function successEffect() {
+
+    sessionStorage.setItem("unlocked", "true");
+
+    // 🔓 cadenas animation
+    if (lockIcon) {
+        lockIcon.textContent = "🔓";
+        lockIcon.classList.add("open");
+    }
+
+    lockBox.classList.add("zoom-out");
 
     setTimeout(() => {
-        lockBox.classList.remove("shake");
+
+        lockScreen.style.opacity = "0";
+        lockScreen.style.transition = "0.8s ease";
+
+        setTimeout(() => {
+            lockScreen.style.display = "none";
+
+            site.style.display = "block";
+
+            setTimeout(() => {
+                site.style.opacity = "1";
+            }, 100);
+
+        }, 800);
+
     }, 400);
 }
 
-function successEffect() {
-    sessionStorage.setItem("unlocked", "true");
-
-    lockScreen.style.display = "none";
-    site.style.display = "block";
-
-    setTimeout(() => {
-        site.style.opacity = "1";
-    }, 50);
-}
-
+/* =========================
+   CHECK CODE
+========================= */
 function checkCode() {
     if (code === correctCode) {
         successEffect();
@@ -62,9 +107,8 @@ function checkCode() {
 }
 
 /* =========================
-   STATS FIX POSITION SAFE
+   STATS
 ========================= */
-
 const startDate = new Date("2025-02-20");
 
 function updateDaysTogether() {
@@ -83,7 +127,9 @@ function updateDaysTogether() {
 
 updateDaysTogether();
 
-/* SCROLL */
+/* =========================
+   SCROLL REVEAL
+========================= */
 const reveals = document.querySelectorAll(".reveal");
 
 function revealOnScroll() {
@@ -103,12 +149,25 @@ function revealOnScroll() {
 window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
 
+/* =========================
+   TIMELINE POPUP (FIX IMPORTANT)
+========================= */
 function openTimeline(title, text){
+    const popup = document.getElementById("timelinePopup");
+
     document.getElementById("popupTitle").textContent = title;
     document.getElementById("popupText").textContent = text;
-    document.getElementById("timelinePopup").style.display = "flex";
+
+    popup.style.display = "flex";
 }
 
 function closeTimeline(){
     document.getElementById("timelinePopup").style.display = "none";
 }
+
+/* fermer popup en cliquant dehors */
+document.getElementById("timelinePopup").addEventListener("click", function(e){
+    if (e.target === this) {
+        closeTimeline();
+    }
+});
