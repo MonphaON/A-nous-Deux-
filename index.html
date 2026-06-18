@@ -19,6 +19,16 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 
+<div class="timeline-popup" id="timelinePopup" onclick="closeTimeline()">
+    <div class="timeline-popup-content" onclick="event.stopPropagation()">
+
+        <span class="close-btn" onclick="closeTimeline()">✕</span>
+
+        <h2 id="popupTitle"></h2>
+        <p id="popupText"></p>
+
+    </div>
+</div>
     
 <body>
 
@@ -102,6 +112,46 @@ if ('serviceWorker' in navigator) {
 
 </main>
 
+<!-- 💖 TIMELINE -->
+<section class="timeline-section">
+    <h2>Notre Histoire ❤️</h2>
+
+    <div class="timeline">
+
+        <div class="timeline-item" onclick="openTimeline('Rencontre ✈️','Le jour où tout a commencé grâce à notre passion commune ❤️')">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>Rencontre ✈️</h3>
+                <p>Le début de notre histoire</p>
+            </div>
+        </div>
+
+        <div class="timeline-item" onclick="openTimeline('20 Février 2025 ❤️','Le jour où on s’est mis ensemble. Le plus beau jour ❤️')">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>20 Février 2025 ❤️</h3>
+                <p>Notre date</p>
+            </div>
+        </div>
+
+        <div class="timeline-item" onclick="openTimeline('Premier voyage 🌍','Un moment gravé à jamais dans nos souvenirs ❤️')">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>Premier voyage 🌍</h3>
+                <p>Des souvenirs forts</p>
+            </div>
+        </div>
+
+        <div class="timeline-item" onclick="openTimeline('Aujourd’hui 💍','Et ce n’est que le début de notre histoire ❤️')">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>Aujourd’hui 💍</h3>
+                <p>Encore ensemble</p>
+            </div>
+        </div>
+
+    </div>
+</section>
 <footer class="bottom-footer">
     <p class="footer-text">Toujours et pour toujours mon amour ❤️</p>
 </footer>
