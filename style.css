@@ -668,3 +668,111 @@ nav a:hover{
     opacity: 0;
     filter: drop-shadow(0 0 20px #ff4d8d);
 }
+
+/* =========================
+   💥 FEEDBACK COULEURS LOCK
+========================= */
+
+/* rouge global */
+.lock-box.error-state {
+    border: 2px solid #ff4d4d;
+    box-shadow: 0 0 30px rgba(255, 77, 77, 0.6);
+    animation: shake 0.4s;
+}
+
+/* vert global */
+.lock-box.success-state {
+    border: 2px solid #4dff88;
+    box-shadow: 0 0 35px rgba(77, 255, 136, 0.7);
+    animation: successPulse 0.6s ease;
+}
+
+/* flash rouge rapide */
+.flash-red {
+    animation: flashRed 0.4s;
+}
+
+@keyframes flashRed {
+    0% { background: rgba(255, 0, 0, 0.25); }
+    100% { background: rgba(255,255,255,0.08); }
+}
+
+/* flash vert rapide */
+.flash-green {
+    animation: flashGreen 0.4s;
+}
+
+@keyframes flashGreen {
+    0% { background: rgba(0, 255, 120, 0.25); }
+    100% { background: rgba(255,255,255,0.08); }
+}
+
+/* petit effet validation */
+@keyframes successPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* message erreur ceo */
+
+#toast {
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    padding: 12px 20px;
+    border-radius: 15px;
+
+    background: rgba(255, 77, 77, 0.15);
+    border: 1px solid rgba(255, 77, 77, 0.4);
+    color: #ff4d4d;
+
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    backdrop-filter: blur(10px);
+
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+#toast.show {
+    opacity: 1;
+    bottom: -60px;
+}
+
+#toast.success {
+    background: rgba(77, 255, 136, 0.15);
+    border: 1px solid rgba(77, 255, 136, 0.4);
+    color: #4dff88;
+}
+
+/* coeur */
+
+#heartContainer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: floatUp 2s linear forwards;
+    opacity: 0.9;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-200px) scale(1.5);
+        opacity: 0;
+    }
+}
