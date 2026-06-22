@@ -163,6 +163,7 @@ if ('serviceWorker' in navigator) {
         <h2>Entre le code</h2>
 
         <div class="code-display" id="codeDisplay">______</div>
+        <div id="statusLight"></div>
 
         <p class="error" id="errorText"></p>
 
@@ -180,8 +181,10 @@ if ('serviceWorker' in navigator) {
             <button onclick="addNumber(0)">0</button>
             <button class="ok" onclick="checkCode()">OK</button>
         </div>
-
+    <div id="toast"></div>
     </div>
+
+<div id="heartContainer"></div>
 </div>
 
 <script src="script.js"></script>
