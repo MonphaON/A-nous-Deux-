@@ -9,7 +9,7 @@ const site = document.getElementById("site");
 const codeDisplay = document.getElementById("codeDisplay");
 const errorText = document.getElementById("errorText");
 const lockIcon = document.getElementById("lockIcon");
-
+const statusLight = document.getElementById("statusLight");
 /* =========================
    AUTO UNLOCK (SESSION)
 ========================= */
@@ -52,11 +52,26 @@ function updateDisplay() {
    WRONG EFFECT
 ========================= */
 function wrongEffect() {
-    errorText.textContent = "Code incorrect ❌";
 
-    lockBox.classList.remove("shake");
+    showToast("Code incorrect ❌", "error");
+
+    lockBox.classList.remove("success-state");
+    lockBox.classList.add("error-state");
+
+    lockBox.classList.remove("flash-red");
     void lockBox.offsetWidth;
-    lockBox.classList.add("shake");
+    lockBox.classList.add("flash-red");
+
+    const statusLight = document.getElementById("statusLight");
+    if (statusLight) statusLight.className = "red";
+
+    setTimeout(() => {
+        lockBox.classList.remove("error-state");
+    }, 500);
+
+    if (navigator.vibrate) {
+    navigator.vibrate([80, 40, 80]);
+}
 }
 
 /* =========================
@@ -64,15 +79,31 @@ function wrongEffect() {
 ========================= */
 function successEffect() {
 
+    showToast("Bienvenue ❤️", "success");
+    spawnHearts();
+
     sessionStorage.setItem("unlocked", "true");
 
-    // 🔓 cadenas animation
+    errorText.textContent = "";
+
+    lockBox.classList.remove("error-state");
+    lockBox.classList.add("success-state");
+
+    lockBox.classList.remove("flash-green");
+    void lockBox.offsetWidth;
+    lockBox.classList.add("flash-green");
+
+    const statusLight = document.getElementById("statusLight");
+    if (statusLight) statusLight.className = "green";
+
     if (lockIcon) {
         lockIcon.textContent = "🔓";
         lockIcon.classList.add("open");
     }
 
-    lockBox.classList.add("zoom-out");
+    setTimeout(() => {
+        lockBox.classList.add("zoom-out");
+    }, 400);
 
     setTimeout(() => {
 
@@ -90,7 +121,7 @@ function successEffect() {
 
         }, 800);
 
-    }, 400);
+    }, 900);
 }
 
 /* =========================
@@ -171,3 +202,45 @@ document.getElementById("timelinePopup").addEventListener("click", function(e){
         closeTimeline();
     }
 });
+
+
+function showToast(message, type) {
+    const toast = document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.className = "";
+
+    toast.classList.add("show");
+
+    if (type === "error") {
+        toast.classList.add("error");
+    }
+
+    if (type === "success") {
+        toast.classList.add("success");
+    }
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
+}
+
+function spawnHearts() {
+    const container = document.getElementById("heartContainer");
+
+    for (let i = 0; i < 15; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerText = "❤️";
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "80vh";
+        heart.style.fontSize = (15 + Math.random() * 20) + "px";
+
+        container.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 2000);
+    }
+}
